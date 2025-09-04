@@ -4,165 +4,175 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>HSYNTH — Site officiel</title>
-    <meta name="description" content="HSYNTH — rap/R&B. Soudain l'Été Dernier (2024), IDÉEL (EP, 2024), Décolle, Vanilla, Honey Freestyle, SAD, Satine, John Richmond…" />
+    <meta name="description" content="HSYNTH — rap / R&B / électro. IDÉEL (EP), Soudain l’Été Dernier (Album), SAD, Satine, John Richmond, Honey Freestyle, Vanilla, Décolle, Ellie Bamber." />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              ink: '#0a0a0a',
+              paper: '#0e0e0e',
+              honey: { 300:'#ffd166', 400:'#ffbe3b', 500:'#ffab00' }
+            },
+            fontFamily: { display: ['Impact', 'Anton', 'Inter', 'system-ui', 'sans-serif'] },
+            boxShadow: {
+              btn: '0 0 0 0 rgba(255,190,59,0), 0 10px 40px -15px rgba(255,190,59,.7)'
+            }
+          }
+        }
+      }
+    </script>
     <style>
       html { scroll-behavior: smooth; }
-      .glass { backdrop-filter: blur(10px); background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.15); }
+      .glass { backdrop-filter: blur(8px); background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); }
       .section { padding-top: 6rem; padding-bottom: 6rem; }
+      .label { letter-spacing: .08em; font-weight: 800; }
     </style>
   </head>
-  <body class="bg-black text-neutral-100 selection:bg-white/20 antialiased">
-    <!-- Nav -->
-    <header class="fixed inset-x-0 top-0 z-50">
-      <nav class="mx-auto max-w-6xl px-4">
-        <div class="glass rounded-2xl mt-4 flex items-center justify-between px-4 py-3">
-          <a href="#home" class="font-black tracking-widest text-xl">HSYNTH</a>
-          <div class="hidden md:flex gap-6 text-sm">
-            <a href="#bio" class="hover:opacity-80">Bio</a>
-            <a href="#music" class="hover:opacity-80">Musique</a>
-            <a href="#video" class="hover:opacity-80">Vidéos</a>
-            <a href="#contact" class="hover:opacity-80">Contact</a>
-          </div>
+  <body class="bg-ink text-neutral-100 antialiased selection:bg-honey-400/30 selection:text-white">
+
+    <!-- Header top bar -->
+    <header class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/60 backdrop-blur">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
+        <nav class="flex items-center gap-6 text-sm font-semibold">
+          <a href="#music" class="hover:opacity-80">MUSIC</a>
+          <a href="#store" class="hover:opacity-80">STORE</a>
+          <a href="#tour" class="hover:opacity-80">TOUR</a>
+          <a href="#videos" class="hover:opacity-80">VIDEOS</a>
+        </nav>
+        <a href="#home" class="font-black text-xl tracking-wider">HSYNTH</a>
+        <div class="hidden sm:flex items-center gap-4 text-white/80">
+          <!-- simple icons -->
+          <a aria-label="Instagram" href="https://www.instagram.com/hsynth_dnt/" target="_blank" class="hover:text-white">IG</a>
+          <a aria-label="TikTok" href="https://www.tiktok.com/@hsynth_sto?lang=fr" target="_blank" class="hover:text-white">TT</a>
+          <a aria-label="Spotify" href="https://open.spotify.com/artist/51u85AssIGcj7CkvDhOZYU" target="_blank" class="hover:text-white">Spotify</a>
+          <a aria-label="Apple Music" href="https://music.apple.com/fr/artist/hsynth/1621681957" target="_blank" class="hover:text-white">Apple</a>
+          <a aria-label="YouTube" href="https://www.youtube.com/channel/UC9aF9nsuNnVmBeZjshxJwLg" target="_blank" class="hover:text-white">YT</a>
         </div>
-      </nav>
+      </div>
     </header>
 
-    <!-- Hero -->
-    <section id="home" class="section pt-32">
-      <div class="mx-auto max-w-6xl px-4 grid md:grid-cols-2 gap-10 items-center">
-        <div>
-          <h1 class="text-5xl md:text-6xl font-black leading-tight">HSYNTH</h1>
-          <p class="mt-4 text-lg text-neutral-300">Rap • R&B • Électro — textures modernes, émotions brutes.</p>
+    <!-- HERO full-bleed banner -->
+    <section id="home" class="min-h-[90svh] pt-14 relative overflow-hidden">
+      <img src="img/hsynth-press-1.jpg" alt="HSYNTH — photo presse" class="absolute inset-0 w-full h-full object-cover opacity-80" />
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 flex flex-col justify-end h-full">
+        <div class="max-w-xl">
+          <div class="label text-xs text-white/80">SINGLE</div>
+          <h1 class="mt-3 font-display text-5xl sm:text-6xl tracking-tight">ELLIE BAMBER</h1>
+          <p class="mt-3 text-neutral-200 max-w-lg">Nouveau single d’HSYNTH. Voix brutes, synthés nocturnes, énergie club.</p>
           <div class="mt-6 flex flex-wrap gap-3">
-            <a href="https://open.spotify.com/artist/51u85AssIGcj7CkvDhOZYU" target="_blank" class="glass px-4 py-2 rounded-xl text-sm">Spotify</a>
-            <a href="https://music.apple.com/fr/artist/hsynth/1621681957" target="_blank" class="glass px-4 py-2 rounded-xl text-sm">Apple Music</a>
-            <a href="https://www.youtube.com/channel/UC9aF9nsuNnVmBeZjshxJwLg" target="_blank" class="glass px-4 py-2 rounded-xl text-sm">YouTube</a>
-            <a href="https://www.instagram.com/hsynth_dnt/" target="_blank" class="glass px-4 py-2 rounded-xl text-sm">Instagram</a>
-            <a href="https://www.tiktok.com/@hsynth_sto?lang=fr" target="_blank" class="glass px-4 py-2 rounded-xl text-sm">TikTok</a>
+            <a href="https://open.spotify.com/artist/51u85AssIGcj7CkvDhOZYU" target="_blank" class="inline-flex items-center justify-center rounded-lg bg-white text-black px-5 py-3 font-extrabold shadow-btn hover:translate-y-[-2px] transition">OUT NOW</a>
+            <a href="#music" class="inline-flex items-center justify-center rounded-lg border border-white/30 px-5 py-3 font-semibold hover:bg-white/10">EXPLORE MUSIC</a>
           </div>
         </div>
-        <div class="relative">
-          <img alt="HSYNTH — photo presse" src="img/hsynth-press-1.jpg" class="rounded-2xl shadow-2xl" />
-        </div>
       </div>
     </section>
 
-    <!-- Bio -->
-    <section id="bio" class="section bg-gradient-to-b from-black to-neutral-900">
-      <div class="mx-auto max-w-4xl px-4">
-        <h2 class="text-3xl md:text-4xl font-extrabold">Bio</h2>
-        <p class="mt-4 leading-relaxed text-neutral-300">
-          HSYNTH est un artiste/rappeur/producteur français. Après un premier EP <em>IDÉEL</em> (janv. 2024) et l’album <em>Soudain l’Été Dernier</em> (sept. 2024), il enchaîne les singles en 2024–2025 : « SAD », « Satine », « John Richmond », « Honey Freestyle », « Vanilla », « Décolle », puis « Ellie Bamber ». Entre mélancolie et énergie club, sa palette mêle voix brutes, nappes synthé et rythmiques nerveuses.
-        </p>
-        <p class="mt-3 text-sm text-neutral-400">© ℗ crédits : 2024 Don’t Need Them / 2025 Honey Music / 2023 STO Production.</p>
-      </div>
-    </section>
-
-    <!-- Music / Embeds -->
+    <!-- MUSIC slider (covers) + listen button -->
     <section id="music" class="section">
-      <div class="mx-auto max-w-6xl px-4">
-        <h2 class="text-3xl md:text-4xl font-extrabold">Musique</h2>
-        <p class="mt-2 text-neutral-300">Écoute directe + discographie vérifiée.</p>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="label text-white/80">MUSIC</h2>
+        <h3 class="text-3xl md:text-4xl font-black mt-2">Dernières sorties</h3>
 
-        <!-- Spotify Artist Embed -->
-        <div class="mt-6">
-          <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/51u85AssIGcj7CkvDhOZYU" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <div class="mt-8 relative">
+          <div id="slider" class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2">
+            <!-- Cards; use Apple covers via embeds for accuracy -->
+            <a class="min-w-[280px] snap-center group" target="_blank" href="https://music.apple.com/fr/album/d%C3%A9colle-single/1825867188">
+              <div class="aspect-square rounded-xl overflow-hidden ring-1 ring-white/10">
+                <iframe class="w-full h-full" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/fr/album/d%C3%A9colle-single/1825867188"></iframe>
+              </div>
+              <div class="mt-2 text-sm text-white/80">Décolle — 2025</div>
+            </a>
+            <a class="min-w-[280px] snap-center group" target="_blank" href="https://music.apple.com/fr/album/vanilla-single/1816837082">
+              <div class="aspect-square rounded-xl overflow-hidden ring-1 ring-white/10">
+                <iframe class="w-full h-full" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/fr/album/vanilla-single/1816837082"></iframe>
+              </div>
+              <div class="mt-2 text-sm text-white/80">Vanilla — 2025</div>
+            </a>
+            <a class="min-w-[280px] snap-center group" target="_blank" href="https://music.apple.com/fr/album/honey-freestyle-single/1802084173">
+              <div class="aspect-square rounded-xl overflow-hidden ring-1 ring-white/10">
+                <iframe class="w-full h-full" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/fr/album/honey-freestyle-single/1802084173"></iframe>
+              </div>
+              <div class="mt-2 text-sm text-white/80">Honey Freestyle — 2025</div>
+            </a>
+            <a class="min-w-[280px] snap-center group" target="_blank" href="https://music.apple.com/fr/album/satine-single/1780193758">
+              <div class="aspect-square rounded-xl overflow-hidden ring-1 ring-white/10">
+                <iframe class="w-full h-full" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/fr/album/satine-single/1780193758"></iframe>
+              </div>
+              <div class="mt-2 text-sm text-white/80">Satine — 2024</div>
+            </a>
+          </div>
         </div>
 
-        <!-- Apple Music key releases -->
-        <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="175" style="width:100%;max-width:100%;overflow:hidden;border-radius:14px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/fr/album/soudain-l%C3%A9t%C3%A9-dernier/1768735036"></iframe>
-          <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="175" style="width:100%;max-width:100%;overflow:hidden;border-radius:14px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/fr/album/id%C3%A9el-ep/1727479493"></iframe>
-          <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="175" style="width:100%;max-width:100%;overflow:hidden;border-radius:14px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/fr/album/d%C3%A9colle-single/1825867188"></iframe>
-          <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="175" style="width:100%;max-width:100%;overflow:hidden;border-radius:14px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/fr/album/vanilla-single/1816837082"></iframe>
-          <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="175" style="width:100%;max-width:100%;overflow:hidden;border-radius:14px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/fr/album/honey-freestyle-single/1802084173"></iframe>
-          <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="175" style="width:100%;max-width:100%;overflow:hidden;border-radius:14px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/fr/album/satine-single/1780193758"></iframe>
-        </div>
-
-        <!-- Full discography quick list -->
-        <div class="mt-10 grid md:grid-cols-2 gap-6">
-          <div class="glass rounded-2xl p-6">
-            <h3 class="font-bold mb-3">2025</h3>
-            <ul class="space-y-2 text-sm">
-              <li>22 août — <strong>Ellie Bamber</strong> — ℗ Honey Music</li>
-              <li>11 juil. — <a class="underline hover:no-underline" target="_blank" href="https://music.apple.com/fr/album/d%C3%A9colle-single/1825867188">Décolle</a> — ℗ Honey Music</li>
-              <li>26 mai — <a class="underline hover:no-underline" target="_blank" href="https://music.apple.com/fr/album/vanilla-single/1816837082">Vanilla</a> — ℗ Honey Music</li>
-              <li>4 avr. — <a class="underline hover:no-underline" target="_blank" href="https://music.apple.com/fr/album/honey-freestyle-single/1802084173">Honey Freestyle</a> — ℗ Don’t Need Them</li>
-            </ul>
-          </div>
-          <div class="glass rounded-2xl p-6">
-            <h3 class="font-bold mb-3">2024</h3>
-            <ul class="space-y-2 text-sm">
-              <li>11 déc. — <a class="underline hover:no-underline" target="_blank" href="https://music.apple.com/fr/album/sad-single/1784408026">SAD</a> — ℗ Don’t Need Them</li>
-              <li>27 nov. — <a class="underline hover:no-underline" target="_blank" href="https://music.apple.com/fr/album/satine-single/1780193758">Satine</a> — ℗ Don’t Need Them</li>
-              <li>18 oct. — <a class="underline hover:no-underline" target="_blank" href="https://music.apple.com/fr/album/john-richmond-single/1772272900">John Richmond</a> — ℗ Don’t Need Them</li>
-              <li>30 août — <a class="underline hover:no-underline" target="_blank" href="https://music.apple.com/fr/album/back-to-back-single/1765915902">Back To Back</a> (2 titres) — ℗ Don’t Need Them</li>
-              <li>14 sept. — <a class="underline hover:no-underline" target="_blank" href="https://music.apple.com/fr/album/soudain-l%C3%A9t%C3%A9-dernier/1768735036">Soudain l’Été Dernier</a> (Album, 10 titres) — ℗ Don’t Need Them</li>
-              <li>24 janv. — <a class="underline hover:no-underline" target="_blank" href="https://music.apple.com/fr/album/id%C3%A9el-ep/1727479493">IDÉEL</a> (EP, 4 titres) — ℗ Don’t Need Them</li>
-              <li>14 janv. — <a class="underline hover:no-underline" target="_blank" href="https://music.apple.com/fr/album/serenade-single/1725674017">Serenade</a> — ℗ Don’t Need Them</li>
-            </ul>
-          </div>
-          <div class="glass rounded-2xl p-6 md:col-span-2">
-            <h3 class="font-bold mb-3">2023</h3>
-            <ul class="space-y-2 text-sm">
-              <li>22 juin — <a class="underline hover:no-underline" target="_blank" href="https://music.apple.com/fr/album/hard-feat-k2l-single/1693445688">Hard (feat. K2L)</a> — ℗ STO Production</li>
-              <li>14 mai — <a class="underline hover:no-underline" target="_blank" href="https://music.apple.com/fr/album/escalier-en-marbre-single/1688078682">Escalier en Marbre</a> — ℗ STO Production</li>
-            </ul>
-          </div>
+        <div class="mt-8">
+          <a href="https://open.spotify.com/artist/51u85AssIGcj7CkvDhOZYU" target="_blank" class="inline-flex items-center justify-center rounded-lg bg-honey-400 text-black px-6 py-3 font-black shadow-btn hover:translate-y-[-2px] transition">LISTEN ON SPOTIFY</a>
         </div>
       </div>
     </section>
-    <!-- Tour -->
+
+    <!-- TOUR DATES -->
     <section id="tour" class="section bg-neutral-900/40">
-      <div class="mx-auto max-w-6xl px-4">
-        <h2 class="text-3xl md:text-4xl font-extrabold">Tournée</h2>
-        <div class="mt-6 grid md:grid-cols-2 gap-6">
-          <div class="glass rounded-2xl p-6">
-            <h3 class="text-xl font-bold">Nower Fest' — Saint‑Brieuc (22)</h3>
-            <p class="mt-2 text-neutral-300">Samedi <strong>13 septembre 2025</strong> — <em>Parc des Promenades</em>. Festival rap/électro/house (2ᵉ édition).</p>
-            <ul class="mt-3 text-sm text-neutral-300 list-disc pl-5 space-y-1">
-              <li>Apparition de <strong>HSYNTH</strong> en guest aux côtés de <strong>Meleon K</strong>.</li>
-              <li>After officiel : <em>Talys Club</em> (Yffiniac) à partir de <strong>1h</strong>.</li>
-              <li>Animations : tatoueurs, graff, barbers, etc.</li>
-            </ul>
-            <div class="mt-4 flex flex-wrap gap-3">
-              <a class="glass px-4 py-2 rounded-xl text-sm" target="_blank" href="https://www.nowerfest.com/">Site officiel</a>
-              <a class="glass px-4 py-2 rounded-xl text-sm" target="_blank" href="https://www.instagram.com/nowerfest/">Instagram</a>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="label text-white/80">TOUR DATES</h2>
+        <h3 class="text-3xl md:text-4xl font-black mt-2">À venir</h3>
+        <div class="mt-6 divide-y divide-white/10 rounded-2xl overflow-hidden ring-1 ring-white/10">
+          <div class="grid grid-cols-12 items-center bg-black/40 px-4 sm:px-6 py-5">
+            <div class="col-span-4 sm:col-span-2 font-extrabold">SEP 13</div>
+            <div class="col-span-8 sm:col-span-4">Nower Fest' — Parc des Promenades</div>
+            <div class="hidden sm:block col-span-3 text-white/70">Saint‑Brieuc, FR</div>
+            <div class="hidden sm:block col-span-2 font-semibold">Guest avec MeleonK</div>
+            <div class="col-span-12 sm:col-span-1 mt-3 sm:mt-0 text-right">
+              <a href="https://www.nowerfest.com/" target="_blank" class="inline-flex items-center justify-center rounded-md border border-white px-3 py-2 text-sm font-black hover:bg-white hover:text-black">TICKETS</a>
             </div>
-            <p class="mt-3 text-xs text-neutral-400">* Infos publiques : Nower Fest (site, IG) et posts officiels.</p>
           </div>
-          <div class="rounded-2xl overflow-hidden">
-            <img src="img/hsynth-press-2.jpg" alt="HSYNTH — studio" class="w-full h-full object-cover" />
-          </div>
+        </div>
+        <p class="mt-3 text-xs text-white/50">After officiel : Talys Club (Yffiniac). Infos via le site/IG Nower Fest.</p>
+      </div>
+    </section>
+
+    <!-- VIDEOS GRID -->
+    <section id="videos" class="section">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="label text-white/80">VIDEOS</h2>
+        <h3 class="text-3xl md:text-4xl font-black mt-2">Clips & visualizers</h3>
+        <div class="mt-8 grid md:grid-cols-2 gap-6">
+          <a class="block group" href="https://www.youtube.com/watch?v=Dq4wPJruDqY" target="_blank">
+            <div class="aspect-video overflow-hidden rounded-xl ring-1 ring-white/10">
+              <img src="https://i.ytimg.com/vi/Dq4wPJruDqY/maxresdefault.jpg" class="w-full h-full object-cover group-hover:scale-105 transition" alt="Ellie Bamber — HSYNTH" />
+            </div>
+            <div class="mt-2 font-semibold">ELLIE BAMBER</div>
+          </a>
+          <a class="block group" href="https://www.youtube.com/watch?v=aIjdKz2s_Yk" target="_blank">
+            <div class="aspect-video overflow-hidden rounded-xl ring-1 ring-white/10">
+              <img src="https://i.ytimg.com/vi/aIjdKz2s_Yk/maxresdefault.jpg" class="w-full h-full object-cover group-hover:scale-105 transition" alt="Serenade — HSYNTH" />
+            </div>
+            <div class="mt-2 font-semibold">SERENADE</div>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- Videos -->
-    <section id="video" class="section bg-neutral-900/50">
-      <div class="mx-auto max-w-6xl px-4">
-        <h2 class="text-3xl md:text-4xl font-extrabold">Vidéos</h2>
-        <div class="mt-6 grid md:grid-cols-2 gap-6">
-          <div class="aspect-video rounded-2xl overflow-hidden">
-            <iframe class="w-full h-full" src="https://www.youtube.com/embed/Dq4wPJruDqY" title="Ellie Bamber — HSYNTH (audio officiel)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-          <div class="aspect-video rounded-2xl overflow-hidden">
-            <iframe class="w-full h-full" src="https://www.youtube.com/embed/aIjdKz2s_Yk" title="Serenade — HSYNTH" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
+    <!-- NEWSLETTER / FORTNITE-LIKE CTA -->
+    <section id="store" class="section bg-neutral-900/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <div class="label text-white/80">NEWSLETTER</div>
+          <h3 class="text-3xl md:text-4xl font-black mt-2">Reçois les drops & dates</h3>
+          <p class="mt-2 text-white/70">Aucun spam. Un mail à chaque sortie, merch ou concert.</p>
+          <form class="mt-6 flex gap-2" onsubmit="event.preventDefault(); alert('Merci !');">
+            <input type="email" required placeholder="ton@email" class="flex-1 rounded-lg bg-black/40 px-4 py-3 ring-1 ring-white/10 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-honey-400" />
+            <button class="rounded-lg bg-white text-black px-5 py-3 font-black shadow-btn hover:translate-y-[-2px] transition">S’INSCRIRE</button>
+          </form>
+        </div>
+        <div class="rounded-2xl overflow-hidden ring-1 ring-white/10">
+          <img src="img/hsynth-press-2.jpg" alt="HSYNTH — studio" class="w-full h-full object-cover" />
         </div>
       </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="section">
-      <div class="mx-auto max-w-3xl px-4">
-        <h2 class="text-3xl md:text-4xl font-extrabold">Contact</h2>
-        <p class="mt-4 text-neutral-300">Booking, presse, synchro : <a class="underline" href="mailto:contact@hsynth.fr">contact@hsynth.fr</a></p>
-        <p class="mt-2 text-sm text-neutral-400">Boutique &amp; billetterie à venir.</p>
-      </div>
-    </section>
+    <footer class="py-10 text-center text-xs text-white/60 border-t border-white/10">© HSYNTH. Tous droits réservés — Honey Music / Don’t Need Them.</footer>
 
-    <footer class="py-10 text-center text-sm text-neutral-500">© HSYNTH. Tous droits réservés.</footer>
   </body>
 </html>
