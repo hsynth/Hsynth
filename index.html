@@ -4,296 +4,138 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>HSYNTH — Site officiel</title>
-    <meta name="description" content="HSYNTH — Rap · R&B · Électro. Une esthétique crépusculaire, des textures modernes, des émotions brutes." />
-    <!-- Tailwind CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="description" content="HSYNTH — rap/R&B. Soudain l'Été Dernier (2024), IDÉEL (EP, 2024), Décolle, Vanilla, Honey Freestyle, SAD, Satine, John Richmond…" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.4/dist/tailwind.min.css" rel="stylesheet" />
     <style>
-      html, body { background: #000; color:#fff; }
-      /* Marquee */
-      @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-      /* Smooth hover lift */
-      .lift { transition: transform .2s ease, box-shadow .2s ease; }
-      .lift:hover { transform: translateY(-2px); }
-      /* Glass */
-      .glass { backdrop-filter: blur(10px); background: rgba(0,0,0,.35); }
+      html { scroll-behavior: smooth; }
+      .glass { backdrop-filter: blur(10px); background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.15); }
+      .section { padding-top: 6rem; padding-bottom: 6rem; }
     </style>
   </head>
-  <body class="selection:bg-amber-300 selection:text-black">
-    <!-- NAV -->
-    <header class="fixed top-0 inset-x-0 z-40">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <nav class="mt-4 flex items-center justify-between rounded-2xl glass ring-1 ring-white/10 px-4 py-3">
-          <a href="#home" class="flex items-center gap-2">
-            <span class="grid place-items-center h-9 w-9 rounded-xl bg-gradient-to-br from-amber-400 to-rose-600 ring-1 ring-white/25 font-black text-black">H</span>
-            <span class="font-semibold tracking-wide">HSYNTH</span>
-          </a>
-          <div class="hidden md:flex items-center gap-1 text-white/90">
-            <a href="#music" class="px-3 py-2 rounded-xl hover:bg-white/10">Musique</a>
-            <a href="#tour" class="px-3 py-2 rounded-xl hover:bg-white/10">Tournée</a>
-            <a href="#video" class="px-3 py-2 rounded-xl hover:bg-white/10">Vidéos</a>
-            <a href="#shop" class="px-3 py-2 rounded-xl hover:bg-white/10">Shop</a>
-            <a href="#contact" class="px-3 py-2 rounded-xl hover:bg-white/10">Contact</a>
+  <body class="bg-black text-neutral-100 selection:bg-white/20">
+    <!-- Nav -->
+    <header class="fixed inset-x-0 top-0 z-50">
+      <nav class="mx-auto max-w-6xl px-4">
+        <div class="glass rounded-2xl mt-4 flex items-center justify-between px-4 py-3">
+          <a href="#home" class="font-black tracking-widest text-xl">HSYNTH</a>
+          <div class="hidden md:flex gap-6 text-sm">
+            <a href="#bio" class="hover:opacity-80">Bio</a>
+            <a href="#music" class="hover:opacity-80">Musique</a>
+            <a href="#video" class="hover:opacity-80">Vidéos</a>
+            <a href="#contact" class="hover:opacity-80">Contact</a>
           </div>
-          <div class="hidden md:flex items-center gap-2">
-            <a href="#shop" class="lift inline-flex items-center gap-2 rounded-xl bg-white/90 hover:bg-white text-black px-3 py-2 text-sm font-medium">Shop</a>
-            <a href="#tour" class="lift inline-flex items-center gap-2 rounded-xl bg-amber-400 text-black px-3 py-2 text-sm font-semibold">Billets</a>
-          </div>
-          <button id="menuBtn" class="md:hidden">☰</button>
-        </nav>
-      </div>
-      <!-- mobile menu -->
-      <div id="mobileMenu" class="hidden md:hidden bg-black/80 border-t border-white/10">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col gap-1">
-          <a href="#music" class="px-3 py-3 rounded-lg hover:bg-white/10">Musique</a>
-          <a href="#tour" class="px-3 py-3 rounded-lg hover:bg-white/10">Tournée</a>
-          <a href="#video" class="px-3 py-3 rounded-lg hover:bg-white/10">Vidéos</a>
-          <a href="#shop" class="px-3 py-3 rounded-lg hover:bg-white/10">Shop</a>
-          <a href="#contact" class="px-3 py-3 rounded-lg hover:bg-white/10">Contact</a>
         </div>
-      </div>
+      </nav>
     </header>
 
-    <!-- HERO -->
-    <section id="home" class="relative min-h-[120vh] grid place-items-end overflow-hidden">
-      <div class="absolute inset-0 -z-10">
-        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=2400&auto=format&fit=crop')] bg-cover bg-center"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black"></div>
-        <div class="pointer-events-none absolute -inset-40 -z-10 opacity-40" aria-hidden>
-          <div class="w-full h-full bg-[radial-gradient(circle_at_20%_20%,rgba(255,200,0,0.25),transparent_40%),radial-gradient(circle_at_80%_30%,rgba(255,0,100,0.25),transparent_35%),radial-gradient(circle_at_50%_80%,rgba(50,150,255,0.25),transparent_45%)]"></div>
+    <!-- Hero -->
+    <section id="home" class="section pt-32">
+      <div class="mx-auto max-w-6xl px-4 grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <h1 class="text-5xl md:text-6xl font-black leading-tight">HSYNTH</h1>
+          <p class="mt-4 text-lg text-neutral-300">Rap • R&B • Électro — textures modernes, émotions brutes.</p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="https://open.spotify.com/artist/51u85AssIGcj7CkvDhOZYU" target="_blank" class="glass px-4 py-2 rounded-xl text-sm">Spotify</a>
+            <a href="https://music.apple.com/fr/artist/hsynth/1621681957" target="_blank" class="glass px-4 py-2 rounded-xl text-sm">Apple Music</a>
+            <a href="https://www.youtube.com/channel/UC9aF9nsuNnVmBeZjshxJwLg" target="_blank" class="glass px-4 py-2 rounded-xl text-sm">YouTube</a>
+          </div>
+        </div>
+        <div class="relative">
+          <img alt="HSYNTH studio" src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1600&auto=format&fit=crop" class="rounded-2xl shadow-2xl" />
         </div>
       </div>
-      <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-28 pt-52">
-        <h1 class="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight">HSYNTH</h1>
-        <p class="mt-4 max-w-xl text-white/80 text-lg">Rap · R&B · Électro — Une esthétique crépusculaire, des textures modernes, des émotions brutes.</p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href="#music" class="lift inline-flex items-center gap-2 rounded-2xl bg-white text-black px-5 py-3 font-semibold">Écouter maintenant</a>
-          <a href="#tour" class="lift inline-flex items-center gap-2 rounded-2xl bg-amber-400 text-black px-5 py-3 font-semibold">Billetterie</a>
+    </section>
+
+    <!-- Bio -->
+    <section id="bio" class="section bg-gradient-to-b from-black to-neutral-900">
+      <div class="mx-auto max-w-4xl px-4">
+        <h2 class="text-3xl md:text-4xl font-extrabold">Bio</h2>
+        <p class="mt-4 leading-relaxed text-neutral-300">
+          HSYNTH est un artiste/rappeur/producteur français. Après un premier EP <em>IDÉEL</em> (janv. 2024) et l’album <em>Soudain l’Été Dernier</em> (sept. 2024), il enchaîne les singles en 2024–2025 : « SAD », « Satine », « John Richmond », « Honey Freestyle », « Vanilla », « Décolle », puis « Ellie Bamber ». Entre mélancolie et énergie club, sa palette mêle voix brutes, nappes synthé et rythmiques nerveuses.
+        </p>
+        <p class="mt-3 text-sm text-neutral-400">© ℗ crédits : 2024 Don’t Need Them / 2025 Honey Music / 2023 STO Production.</p>
+      </div>
+    </section>
+
+    <!-- Music / Embeds -->
+    <section id="music" class="section">
+      <div class="mx-auto max-w-6xl px-4">
+        <h2 class="text-3xl md:text-4xl font-extrabold">Musique</h2>
+        <p class="mt-2 text-neutral-300">Écoute directe + discographie vérifiée.</p>
+
+        <!-- Spotify Artist Embed -->
+        <div class="mt-6">
+          <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/51u85AssIGcj7CkvDhOZYU" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div>
-        <div class="mt-16 overflow-hidden">
-          <div class="whitespace-nowrap text-white/40 tracking-widest uppercase text-sm" style="animation: marquee 20s linear infinite;">
-            <span class="mx-6">Nouvel EP · Décolle · 2025</span>
-            <span class="mx-6">Show immersif</span>
-            <span class="mx-6">Édition limitée merch</span>
-            <span class="mx-6">Visual Album</span>
-            <span class="mx-6">Crépuscule Aesthetics</span>
-            <span class="mx-6">Nouvel EP · Décolle · 2025</span>
+
+        <!-- Apple Music key releases -->
+        <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="175" style="width:100%;max-width:100%;overflow:hidden;border-radius:14px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/fr/album/soudain-l%C3%A9t%C3%A9-dernier/1768735036"></iframe>
+          <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="175" style="width:100%;max-width:100%;overflow:hidden;border-radius:14px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/fr/album/id%C3%A9el-ep/1727479493"></iframe>
+          <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="175" style="width:100%;max-width:100%;overflow:hidden;border-radius:14px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/fr/album/d%C3%A9colle-single/1825867188"></iframe>
+          <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="175" style="width:100%;max-width:100%;overflow:hidden;border-radius:14px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/fr/album/vanilla-single/1816837082"></iframe>
+          <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="175" style="width:100%;max-width:100%;overflow:hidden;border-radius:14px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/fr/album/honey-freestyle-single/1802084173"></iframe>
+          <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="175" style="width:100%;max-width:100%;overflow:hidden;border-radius:14px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/fr/album/satine-single/1780193758"></iframe>
+        </div>
+
+        <!-- Full discography quick list -->
+        <div class="mt-10 grid md:grid-cols-2 gap-6">
+          <div class="glass rounded-2xl p-6">
+            <h3 class="font-bold mb-3">2025</h3>
+            <ul class="space-y-2 text-sm">
+              <li>22 août — <strong>Ellie Bamber</strong> — ℗ Honey Music</li>
+              <li>11 juil. — <a class="underline hover:no-underline" target="_blank" href="https://music.apple.com/fr/album/d%C3%A9colle-single/1825867188">Décolle</a> — ℗ Honey Music</li>
+              <li>26 mai — <a class="underline hover:no-underline" target="_blank" href="https://music.apple.com/fr/album/vanilla-single/1816837082">Vanilla</a> — ℗ Honey Music</li>
+              <li>4 avr. — <a class="underline hover:no-underline" target="_blank" href="https://music.apple.com/fr/album/honey-freestyle-single/1802084173">Honey Freestyle</a> — ℗ Don’t Need Them</li>
+            </ul>
+          </div>
+          <div class="glass rounded-2xl p-6">
+            <h3 class="font-bold mb-3">2024</h3>
+            <ul class="space-y-2 text-sm">
+              <li>11 déc. — <a class="underline hover:no-underline" target="_blank" href="https://music.apple.com/fr/album/sad-single/1784408026">SAD</a> — ℗ Don’t Need Them</li>
+              <li>27 nov. — <a class="underline hover:no-underline" target="_blank" href="https://music.apple.com/fr/album/satine-single/1780193758">Satine</a> — ℗ Don’t Need Them</li>
+              <li>18 oct. — <a class="underline hover:no-underline" target="_blank" href="https://music.apple.com/fr/album/john-richmond-single/1772272900">John Richmond</a> — ℗ Don’t Need Them</li>
+              <li>30 août — <a class="underline hover:no-underline" target="_blank" href="https://music.apple.com/fr/album/back-to-back-single/1765915902">Back To Back</a> (2 titres) — ℗ Don’t Need Them</li>
+              <li>14 sept. — <a class="underline hover:no-underline" target="_blank" href="https://music.apple.com/fr/album/soudain-l%C3%A9t%C3%A9-dernier/1768735036">Soudain l’Été Dernier</a> (Album, 10 titres) — ℗ Don’t Need Them</li>
+              <li>24 janv. — <a class="underline hover:no-underline" target="_blank" href="https://music.apple.com/fr/album/id%C3%A9el-ep/1727479493">IDÉEL</a> (EP, 4 titres) — ℗ Don’t Need Them</li>
+              <li>14 janv. — <a class="underline hover:no-underline" target="_blank" href="https://music.apple.com/fr/album/serenade-single/1725674017">Serenade</a> — ℗ Don’t Need Them</li>
+            </ul>
+          </div>
+          <div class="glass rounded-2xl p-6 md:col-span-2">
+            <h3 class="font-bold mb-3">2023</h3>
+            <ul class="space-y-2 text-sm">
+              <li>22 juin — <a class="underline hover:no-underline" target="_blank" href="https://music.apple.com/fr/album/hard-feat-k2l-single/1693445688">Hard (feat. K2L)</a> — ℗ STO Production</li>
+              <li>14 mai — <a class="underline hover:no-underline" target="_blank" href="https://music.apple.com/fr/album/escalier-en-marbre-single/1688078682">Escalier en Marbre</a> — ℗ STO Production</li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- MUSIC -->
-    <section id="music" class="relative py-24">
-      <div class="absolute inset-0 -z-10 bg-gradient-to-b from-black via-black to-black"></div>
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-end justify-between gap-8 flex-wrap">
-          <div>
-            <h2 class="text-3xl sm:text-4xl font-bold">Musique</h2>
-            <p class="text-white/70 mt-2 max-w-xl">Écoute les derniers singles et plonge dans l’univers sonore.</p>
+    <!-- Videos -->
+    <section id="video" class="section bg-neutral-900/50">
+      <div class="mx-auto max-w-6xl px-4">
+        <h2 class="text-3xl md:text-4xl font-extrabold">Vidéos</h2>
+        <div class="mt-6 grid md:grid-cols-2 gap-6">
+          <div class="aspect-video rounded-2xl overflow-hidden">
+            <iframe class="w-full h-full" src="https://www.youtube.com/embed/Dq4wPJruDqY" title="Ellie Bamber — HSYNTH (audio officiel)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
-          <a href="#" class="text-white/80 hover:text-white inline-flex items-center gap-2">Voir tout →</a>
-        </div>
-
-        <div class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <!-- Player card -->
-          <div class="relative isolate rounded-2xl bg-white/5 ring-1 ring-white/10 p-4 sm:p-6">
-            <div class="flex items-center gap-4">
-              <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=600&auto=format&fit=crop" alt="cover" class="h-16 w-16 rounded-xl object-cover"/>
-              <div class="flex-1">
-                <div class="text-white font-semibold">Décolle</div>
-                <div class="text-white/60 text-sm">HSYNTH • 2025</div>
-              </div>
-              <button id="playBtn" class="inline-flex items-center gap-2 rounded-xl bg-white text-black px-4 py-2 font-medium">Play</button>
-              <audio id="audio" src="audio/hsynth-decolle-demo.mp3" preload="none"></audio>
-            </div>
-          </div>
-
-          <!-- Disco cards -->
-          <a href="#" class="group relative isolate rounded-2xl overflow-hidden ring-1 ring-white/10">
-            <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1200&auto=format&fit=crop" alt="Décolle" class="w-full h-64 object-cover group-hover:scale-105 transition duration-500"/>
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent"></div>
-            <div class="absolute bottom-0 p-4">
-              <div class="text-white font-semibold">Décolle</div>
-              <div class="text-white/60 text-sm">2025</div>
-            </div>
-          </a>
-
-          <a href="#" class="group relative isolate rounded-2xl overflow-hidden ring-1 ring-white/10">
-            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1200&auto=format&fit=crop" alt="Sad" class="w-full h-64 object-cover group-hover:scale-105 transition duration-500"/>
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent"></div>
-            <div class="absolute bottom-0 p-4">
-              <div class="text-white font-semibold">Sad</div>
-              <div class="text-white/60 text-sm">2024</div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- TOUR -->
-    <section id="tour" class="relative py-24">
-      <div class="absolute inset-0 -z-10 bg-[radial-gradient(60%_40%_at_50%_0%,rgba(255,200,0,0.15),transparent)]"></div>
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-end justify-between gap-8 flex-wrap">
-          <div>
-            <h2 class="text-3xl sm:text-4xl font-bold">Tournée</h2>
-            <p class="text-white/70 mt-2">Réserve tes places pour l’expérience live.</p>
-          </div>
-          <a href="#" class="text-white/80 hover:text-white inline-flex items-center gap-2">Toutes les dates ↗</a>
-        </div>
-        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-          <a href="#" class="group flex items-center justify-between gap-4 rounded-2xl bg-white/5 ring-1 ring-white/10 p-4 hover:bg-white/10 transition">
-            <div class="flex items-center gap-4">
-              <div class="h-12 w-12 rounded-xl bg-amber-400 text-black grid place-items-center font-bold">21 oct</div>
-              <div>
-                <div class="text-white font-semibold">Paris</div>
-                <div class="text-white/60 text-sm">Le Trianon</div>
-              </div>
-            </div>
-            <div class="text-white/70 text-sm">Billets →</div>
-          </a>
-          <a href="#" class="group flex items-center justify-between gap-4 rounded-2xl bg-white/5 ring-1 ring-white/10 p-4 hover:bg-white/10 transition">
-            <div class="flex items-center gap-4">
-              <div class="h-12 w-12 rounded-xl bg-amber-400 text-black grid place-items-center font-bold">03 nov</div>
-              <div>
-                <div class="text-white font-semibold">Lyon</div>
-                <div class="text-white/60 text-sm">Transbordeur</div>
-              </div>
-            </div>
-            <div class="text-white/70 text-sm">Billets →</div>
-          </a>
-          <a href="#" class="group flex items-center justify-between gap-4 rounded-2xl bg-white/5 ring-1 ring-white/10 p-4 hover:bg-white/10 transition">
-            <div class="flex items-center gap-4">
-              <div class="h-12 w-12 rounded-xl bg-amber-400 text-black grid place-items-center font-bold">18 nov</div>
-              <div>
-                <div class="text-white font-semibold">Marseille</div>
-                <div class="text-white/60 text-sm">Espace Julien</div>
-              </div>
-            </div>
-            <div class="text-white/70 text-sm">Billets →</div>
-          </a>
-          <a href="#" class="group flex items-center justify-between gap-4 rounded-2xl bg-white/5 ring-1 ring-white/10 p-4 hover:bg-white/10 transition">
-            <div class="flex items-center gap-4">
-              <div class="h-12 w-12 rounded-xl bg-amber-400 text-black grid place-items-center font-bold">05 déc</div>
-              <div>
-                <div class="text-white font-semibold">Bruxelles</div>
-                <div class="text-white/60 text-sm">AB</div>
-              </div>
-            </div>
-            <div class="text-white/70 text-sm">Billets →</div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- VIDEO -->
-    <section id="video" class="relative py-24">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-end justify-between gap-8 flex-wrap">
-          <div>
-            <h2 class="text-3xl sm:text-4xl font-bold">Vidéos</h2>
-            <p class="text-white/70 mt-2">Clips et visualizers en haute définition.</p>
-          </div>
-          <a href="#" class="text-white/80 hover:text-white inline-flex items-center gap-2">Chaîne YouTube →</a>
-        </div>
-        <div class="mt-8 aspect-video rounded-2xl overflow-hidden ring-1 ring-white/10 bg-black">
-          <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1" title="HSYNTH - Clip" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div>
-      </div>
-    </section>
-
-    <!-- SHOP -->
-    <section id="shop" class="relative py-24">
-      <div class="absolute inset-0 -z-10 bg-[radial-gradient(60%_60%_at_100%_0%,rgba(255,255,255,0.06),transparent)]"></div>
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-end justify-between gap-8 flex-wrap">
-          <div>
-            <h2 class="text-3xl sm:text-4xl font-bold">Shop</h2>
-            <p class="text-white/70 mt-2">Éditions limitées conçues pour la scène et la rue.</p>
-          </div>
-          <a href="#" class="text-white/80 hover:text-white inline-flex items-center gap-2">Entrer dans le shop →</a>
-        </div>
-        <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <a href="#" class="group relative isolate rounded-2xl overflow-hidden ring-1 ring-white/10 bg-white/5">
-            <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1200&auto=format&fit=crop" alt="merch" class="w-full h-72 object-cover group-hover:scale-105 transition duration-500"/>
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-            <div class="absolute bottom-0 p-4">
-              <div class="text-white font-semibold">T‑Shirt HSYNTH #1</div>
-              <div class="text-white/60 text-sm">Drop limité</div>
-            </div>
-          </a>
-          <a href="#" class="group relative isolate rounded-2xl overflow-hidden ring-1 ring-white/10 bg-white/5">
-            <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1200&auto=format&fit=crop" alt="merch" class="w-full h-72 object-cover group-hover:scale-105 transition duration-500"/>
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-            <div class="absolute bottom-0 p-4">
-              <div class="text-white font-semibold">T‑Shirt HSYNTH #2</div>
-              <div class="text-white/60 text-sm">Drop limité</div>
-            </div>
-          </a>
-          <a href="#" class="group relative isolate rounded-2xl overflow-hidden ring-1 ring-white/10 bg-white/5">
-            <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1200&auto=format&fit=crop" alt="merch" class="w-full h-72 object-cover group-hover:scale-105 transition duration-500"/>
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-            <div class="absolute bottom-0 p-4">
-              <div class="text-white font-semibold">T‑Shirt HSYNTH #3</div>
-              <div class="text-white/60 text-sm">Drop limité</div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="relative py-24">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="rounded-2xl ring-1 ring-white/10 bg-white/5 p-6 md:p-10">
-          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
-            <div>
-              <h3 class="text-2xl font-bold">Restons connectés</h3>
-              <p class="text-white/70 mt-2">Booking, presse, collaborations — écris-nous.</p>
-              <div class="mt-6 flex gap-3">
-                <a href="mailto:contact@hsynth.art" class="lift inline-flex items-center gap-2 rounded-xl bg-white text-black px-4 py-2">Email</a>
-                <a href="#" class="lift inline-flex items-center gap-2 rounded-xl bg-white/90 hover:bg-white text-black px-4 py-2">Instagram</a>
-                <a href="#" class="lift inline-flex items-center gap-2 rounded-xl bg-white/90 hover:bg-white text-black px-4 py-2">X</a>
-              </div>
-            </div>
-            <form class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4" onsubmit="event.preventDefault(); alert('Merci ! On revient vers toi.');">
-              <input class="rounded-xl px-4 py-3 bg-black/40 ring-1 ring-white/10 placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-amber-400" placeholder="Nom" />
-              <input class="rounded-xl px-4 py-3 bg-black/40 ring-1 ring-white/10 placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-amber-400" placeholder="Email" type="email" />
-              <input class="sm:col-span-2 rounded-xl px-4 py-3 bg-black/40 ring-1 ring-white/10 placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-amber-400" placeholder="Objet" />
-              <textarea rows="4" class="sm:col-span-2 rounded-xl px-4 py-3 bg-black/40 ring-1 ring-white/10 placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-amber-400" placeholder="Message"></textarea>
-              <button class="sm:col-span-2 lift inline-flex items-center gap-2 rounded-xl bg-amber-400 text-black px-5 py-3 font-semibold">Envoyer →</button>
-            </form>
+          <div class="aspect-video rounded-2xl overflow-hidden">
+            <iframe class="w-full h-full" src="https://www.youtube.com/embed/aIjdKz2s_Yk" title="Serenade — HSYNTH" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="relative py-10 border-t border-white/10">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-        <p class="text-white/60 text-sm">© <span id="year"></span> HSYNTH. Tous droits réservés.</p>
-        <div class="flex items-center gap-4 text-white/70">
-          <a href="#" class="hover:text-white">Mentions légales</a>
-          <a href="#" class="hover:text-white">Politique de confidentialité</a>
-        </div>
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div class="mx-auto max-w-3xl px-4">
+        <h2 class="text-3xl md:text-4xl font-extrabold">Contact</h2>
+        <p class="mt-4 text-neutral-300">Booking, presse, synchro : <a class="underline" href="mailto:contact@hsynth.fr">contact@hsynth.fr</a></p>
+        <p class="mt-2 text-sm text-neutral-400">Boutique &amp; billetterie à venir.</p>
       </div>
-    </footer>
+    </section>
 
-    <script>
-      // current year
-      document.getElementById('year').textContent = new Date().getFullYear();
-      // mobile menu
-      const btn = document.getElementById('menuBtn');
-      const m = document.getElementById('mobileMenu');
-      btn.addEventListener('click', () => m.classList.toggle('hidden'));
-      // audio player
-      const playBtn = document.getElementById('playBtn');
-      const audio = document.getElementById('audio');
-      let playing = false;
-      playBtn.addEventListener('click', () => {
-        if (!playing) { audio.play(); playBtn.textContent = 'Pause'; playing = true; }
-        else { audio.pause(); playBtn.textContent = 'Play'; playing = false; }
-      });
-    </script>
+    <footer class="py-10 text-center text-sm text-neutral-500">© HSYNTH. Tous droits réservés.</footer>
   </body>
 </html>
