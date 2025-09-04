@@ -1,381 +1,299 @@
-import React, { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { Menu, X, ArrowRight, PlayCircle, PauseCircle, Music2, Instagram, Youtube, Twitter, ChevronRight, ExternalLink, Ticket, Disc3, Headphones, Mail, ShoppingBag } from "lucide-react";
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HSYNTH — Site officiel</title>
+    <meta name="description" content="HSYNTH — Rap · R&B · Électro. Une esthétique crépusculaire, des textures modernes, des émotions brutes." />
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html, body { background: #000; color:#fff; }
+      /* Marquee */
+      @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+      /* Smooth hover lift */
+      .lift { transition: transform .2s ease, box-shadow .2s ease; }
+      .lift:hover { transform: translateY(-2px); }
+      /* Glass */
+      .glass { backdrop-filter: blur(10px); background: rgba(0,0,0,.35); }
+    </style>
+  </head>
+  <body class="selection:bg-amber-300 selection:text-black">
+    <!-- NAV -->
+    <header class="fixed top-0 inset-x-0 z-40">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav class="mt-4 flex items-center justify-between rounded-2xl glass ring-1 ring-white/10 px-4 py-3">
+          <a href="#home" class="flex items-center gap-2">
+            <span class="grid place-items-center h-9 w-9 rounded-xl bg-gradient-to-br from-amber-400 to-rose-600 ring-1 ring-white/25 font-black text-black">H</span>
+            <span class="font-semibold tracking-wide">HSYNTH</span>
+          </a>
+          <div class="hidden md:flex items-center gap-1 text-white/90">
+            <a href="#music" class="px-3 py-2 rounded-xl hover:bg-white/10">Musique</a>
+            <a href="#tour" class="px-3 py-2 rounded-xl hover:bg-white/10">Tournée</a>
+            <a href="#video" class="px-3 py-2 rounded-xl hover:bg-white/10">Vidéos</a>
+            <a href="#shop" class="px-3 py-2 rounded-xl hover:bg-white/10">Shop</a>
+            <a href="#contact" class="px-3 py-2 rounded-xl hover:bg-white/10">Contact</a>
+          </div>
+          <div class="hidden md:flex items-center gap-2">
+            <a href="#shop" class="lift inline-flex items-center gap-2 rounded-xl bg-white/90 hover:bg-white text-black px-3 py-2 text-sm font-medium">Shop</a>
+            <a href="#tour" class="lift inline-flex items-center gap-2 rounded-xl bg-amber-400 text-black px-3 py-2 text-sm font-semibold">Billets</a>
+          </div>
+          <button id="menuBtn" class="md:hidden">☰</button>
+        </nav>
+      </div>
+      <!-- mobile menu -->
+      <div id="mobileMenu" class="hidden md:hidden bg-black/80 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col gap-1">
+          <a href="#music" class="px-3 py-3 rounded-lg hover:bg-white/10">Musique</a>
+          <a href="#tour" class="px-3 py-3 rounded-lg hover:bg-white/10">Tournée</a>
+          <a href="#video" class="px-3 py-3 rounded-lg hover:bg-white/10">Vidéos</a>
+          <a href="#shop" class="px-3 py-3 rounded-lg hover:bg-white/10">Shop</a>
+          <a href="#contact" class="px-3 py-3 rounded-lg hover:bg-white/10">Contact</a>
+        </div>
+      </div>
+    </header>
 
-// --- Helpers
-const cn = (...classes: (string | false | null | undefined)[]) => classes.filter(Boolean).join(" ");
+    <!-- HERO -->
+    <section id="home" class="relative min-h-[120vh] grid place-items-end overflow-hidden">
+      <div class="absolute inset-0 -z-10">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=2400&auto=format&fit=crop')] bg-cover bg-center"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black"></div>
+        <div class="pointer-events-none absolute -inset-40 -z-10 opacity-40" aria-hidden>
+          <div class="w-full h-full bg-[radial-gradient(circle_at_20%_20%,rgba(255,200,0,0.25),transparent_40%),radial-gradient(circle_at_80%_30%,rgba(255,0,100,0.25),transparent_35%),radial-gradient(circle_at_50%_80%,rgba(50,150,255,0.25),transparent_45%)]"></div>
+        </div>
+      </div>
+      <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-28 pt-52">
+        <h1 class="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight">HSYNTH</h1>
+        <p class="mt-4 max-w-xl text-white/80 text-lg">Rap · R&B · Électro — Une esthétique crépusculaire, des textures modernes, des émotions brutes.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#music" class="lift inline-flex items-center gap-2 rounded-2xl bg-white text-black px-5 py-3 font-semibold">Écouter maintenant</a>
+          <a href="#tour" class="lift inline-flex items-center gap-2 rounded-2xl bg-amber-400 text-black px-5 py-3 font-semibold">Billetterie</a>
+        </div>
+        <div class="mt-16 overflow-hidden">
+          <div class="whitespace-nowrap text-white/40 tracking-widest uppercase text-sm" style="animation: marquee 20s linear infinite;">
+            <span class="mx-6">Nouvel EP · Décolle · 2025</span>
+            <span class="mx-6">Show immersif</span>
+            <span class="mx-6">Édition limitée merch</span>
+            <span class="mx-6">Visual Album</span>
+            <span class="mx-6">Crépuscule Aesthetics</span>
+            <span class="mx-6">Nouvel EP · Décolle · 2025</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-// --- Fake data (à remplacer par du contenu réel)
-const NAV = [
-  { id: "home", label: "Accueil" },
-  { id: "music", label: "Musique" },
-  { id: "tour", label: "Tournée" },
-  { id: "video", label: "Vidéos" },
-  { id: "shop", label: "Shop" },
-  { id: "contact", label: "Contact" },
-];
+    <!-- MUSIC -->
+    <section id="music" class="relative py-24">
+      <div class="absolute inset-0 -z-10 bg-gradient-to-b from-black via-black to-black"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-end justify-between gap-8 flex-wrap">
+          <div>
+            <h2 class="text-3xl sm:text-4xl font-bold">Musique</h2>
+            <p class="text-white/70 mt-2 max-w-xl">Écoute les derniers singles et plonge dans l’univers sonore.</p>
+          </div>
+          <a href="#" class="text-white/80 hover:text-white inline-flex items-center gap-2">Voir tout →</a>
+        </div>
 
-const DATES = [
-  { city: "Paris", venue: "Le Trianon", date: "2025-10-21", link: "#" },
-  { city: "Lyon", venue: "Transbordeur", date: "2025-11-03", link: "#" },
-  { city: "Marseille", venue: "Espace Julien", date: "2025-11-18", link: "#" },
-  { city: "Bruxelles", venue: "AB", date: "2025-12-05", link: "#" },
-];
-
-const DISCO = [
-  { title: "Décolle", year: 2025, cover: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1200&auto=format&fit=crop", link: "#" },
-  { title: "Sad", year: 2024, cover: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1200&auto=format&fit=crop", link: "#" },
-  { title: "Nuit Dorée", year: 2023, cover: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1200&auto=format&fit=crop", link: "#" },
-];
-
-// --- Sections
-function Nav({ open, setOpen }: { open: boolean; setOpen: (v: boolean) => void }) {
-  const [active, setActive] = useState("home");
-  useEffect(() => {
-    const onScroll = () => {
-      const positions = NAV.map((n) => {
-        const el = document.getElementById(n.id);
-        if (!el) return { id: n.id, top: 0 };
-        const rect = el.getBoundingClientRect();
-        return { id: n.id, top: Math.abs(rect.top) };
-      });
-      positions.sort((a, b) => a.top - b.top);
-      setActive(positions[0]?.id || "home");
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  return (
-    <div className="fixed top-0 inset-x-0 z-40">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mt-4 flex items-center justify-between rounded-2xl backdrop-blur bg-black/30 ring-1 ring-white/10 px-4 py-3">
-          <a href="#home" className="flex items-center gap-2 group">
-            <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-amber-400 to-rose-600 grid place-items-center ring-1 ring-white/25">
-              <Music2 className="h-5 w-5 text-black" />
+        <div class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Player card -->
+          <div class="relative isolate rounded-2xl bg-white/5 ring-1 ring-white/10 p-4 sm:p-6">
+            <div class="flex items-center gap-4">
+              <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=600&auto=format&fit=crop" alt="cover" class="h-16 w-16 rounded-xl object-cover"/>
+              <div class="flex-1">
+                <div class="text-white font-semibold">Décolle</div>
+                <div class="text-white/60 text-sm">HSYNTH • 2025</div>
+              </div>
+              <button id="playBtn" class="inline-flex items-center gap-2 rounded-xl bg-white text-black px-4 py-2 font-medium">Play</button>
+              <audio id="audio" src="audio/hsynth-decolle-demo.mp3" preload="none"></audio>
             </div>
-            <span className="font-semibold tracking-wide text-white group-hover:text-amber-200 transition">HSYNTH</span>
+          </div>
+
+          <!-- Disco cards -->
+          <a href="#" class="group relative isolate rounded-2xl overflow-hidden ring-1 ring-white/10">
+            <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1200&auto=format&fit=crop" alt="Décolle" class="w-full h-64 object-cover group-hover:scale-105 transition duration-500"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent"></div>
+            <div class="absolute bottom-0 p-4">
+              <div class="text-white font-semibold">Décolle</div>
+              <div class="text-white/60 text-sm">2025</div>
+            </div>
           </a>
-          <div className="hidden md:flex items-center gap-1">
-            {NAV.map((n) => (
-              <a
-                key={n.id}
-                href={`#${n.id}`}
-                className={cn(
-                  "px-3 py-2 text-sm rounded-xl transition hover:bg-white/10",
-                  active === n.id ? "text-amber-300" : "text-white/80"
-                )}
-              >
-                {n.label}
-              </a>
-            ))}
-          </div>
-          <div className="hidden md:flex items-center gap-2">
-            <a href="#shop" className="inline-flex items-center gap-2 rounded-xl bg-white/90 hover:bg-white text-black px-3 py-2 text-sm font-medium transition">
-              <ShoppingBag className="h-4 w-4" /> Shop
-            </a>
-            <a href="#tour" className="inline-flex items-center gap-2 rounded-xl bg-amber-500/90 hover:bg-amber-400 text-black px-3 py-2 text-sm font-medium transition">
-              <Ticket className="h-4 w-4" /> Billets
-            </a>
-          </div>
-          <button className="md:hidden text-white" onClick={() => setOpen(!open)} aria-label="ouvrir le menu">
-            {open ? <X /> : <Menu />}
-          </button>
-        </div>
-      </div>
-      {/* Mobile */}
-      {open && (
-        <div className="md:hidden bg-black/80 backdrop-blur border-t border-white/10">
-          <div className="max-w-7xl mx-auto px-4 py-3 flex flex-col gap-1">
-            {NAV.map((n) => (
-              <a key={n.id} href={`#${n.id}`} className="px-3 py-3 text-white/90 rounded-lg hover:bg-white/10" onClick={() => setOpen(false)}>
-                {n.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
 
-function Hero() {
-  const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 600], [0, 120]);
-  const scale = useTransform(scrollY, [0, 600], [1, 1.15]);
-
-  return (
-    <section id="home" className="relative min-h-[120svh] grid place-items-end overflow-hidden">
-      {/* BG video / image */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black" />
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=2400&auto=format&fit=crop')] bg-cover bg-center" />
-      </div>
-
-      {/* Floating neon noise */}
-      <motion.div style={{ y: y1, scale }} className="pointer-events-none absolute -inset-40 -z-10 opacity-40" aria-hidden>
-        <div className="w-full h-full bg-[radial-gradient(circle_at_20%_20%,rgba(255,200,0,0.25),transparent_40%),radial-gradient(circle_at_80%_30%,rgba(255,0,100,0.25),transparent_35%),radial-gradient(circle_at_50%_80%,rgba(50,150,255,0.25),transparent_45%)]" />
-      </motion.div>
-
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-28 pt-52">
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight text-white"
-        >
-          HSYNTH
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1, duration: 0.8, ease: "easeOut" }}
-          className="mt-4 max-w-xl text-white/80 text-lg"
-        >
-          Rap · R&B · Électro — Une esthétique crépusculaire, des textures modernes, des émotions brutes.
-        </motion.p>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <a href="#music" className="inline-flex items-center gap-2 rounded-2xl bg-white text-black px-5 py-3 font-semibold hover:translate-y-[-2px] transition shadow-lg">
-            <Headphones className="h-5 w-5" /> Écouter maintenant
-          </a>
-          <a href="#tour" className="inline-flex items-center gap-2 rounded-2xl bg-amber-400 text-black px-5 py-3 font-semibold hover:translate-y-[-2px] transition shadow-lg">
-            <Ticket className="h-5 w-5" /> Billetterie
+          <a href="#" class="group relative isolate rounded-2xl overflow-hidden ring-1 ring-white/10">
+            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1200&auto=format&fit=crop" alt="Sad" class="w-full h-64 object-cover group-hover:scale-105 transition duration-500"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent"></div>
+            <div class="absolute bottom-0 p-4">
+              <div class="text-white font-semibold">Sad</div>
+              <div class="text-white/60 text-sm">2024</div>
+            </div>
           </a>
         </div>
-
-        {/* Marquee */}
-        <div className="mt-16 overflow-hidden">
-          <div className="animate-[marquee_20s_linear_infinite] whitespace-nowrap text-white/40 tracking-widest uppercase text-sm">
-            {/* eslint-disable-next-line jsx-a11y/accessible-emoji */}
-            <span className="mx-6">Nouvel EP · Décolle · 2025</span>
-            <span className="mx-6">Show immersif</span>
-            <span className="mx-6">Édition limitée merch</span>
-            <span className="mx-6">Visual Album</span>
-            <span className="mx-6">Crépuscule Aesthetics</span>
-            <span className="mx-6">Nouvel EP · Décolle · 2025</span>
-          </div>
-        </div>
       </div>
     </section>
-  );
-}
 
-function AudioPlayer() {
-  const audioRef = useRef<HTMLAudioElement>(null);
-  const [playing, setPlaying] = useState(false);
-
-  const toggle = () => {
-    const a = audioRef.current;
-    if (!a) return;
-    if (a.paused) { a.play(); setPlaying(true); } else { a.pause(); setPlaying(false); }
-  };
-
-  return (
-    <div className="relative isolate rounded-2xl bg-white/5 ring-1 ring-white/10 p-4 sm:p-6 backdrop-blur">
-      <div className="flex items-center gap-4">
-        <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=600&auto=format&fit=crop" alt="cover" className="h-16 w-16 rounded-xl object-cover" />
-        <div className="flex-1">
-          <div className="text-white font-semibold">Décolle</div>
-          <div className="text-white/60 text-sm">HSYNTH • 2025</div>
-        </div>
-        <button onClick={toggle} className="inline-flex items-center gap-2 rounded-xl bg-white text-black px-4 py-2 font-medium">
-          {playing ? <PauseCircle className="h-5 w-5" /> : <PlayCircle className="h-5 w-5" />} {playing ? "Pause" : "Play"}
-        </button>
-        <audio ref={audioRef} src="/audio/hsynth-decolle-demo.mp3" preload="none" />
-      </div>
-    </div>
-  );
-}
-
-function Music() {
-  return (
-    <section id="music" className="relative py-24">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black via-black to-black" />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-end justify-between gap-8 flex-wrap">
+    <!-- TOUR -->
+    <section id="tour" class="relative py-24">
+      <div class="absolute inset-0 -z-10 bg-[radial-gradient(60%_40%_at_50%_0%,rgba(255,200,0,0.15),transparent)]"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-end justify-between gap-8 flex-wrap">
           <div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white">Musique</h2>
-            <p className="text-white/70 mt-2 max-w-xl">Ecoute les derniers singles et plonge dans l’univers sonore.</p>
+            <h2 class="text-3xl sm:text-4xl font-bold">Tournée</h2>
+            <p class="text-white/70 mt-2">Réserve tes places pour l’expérience live.</p>
           </div>
-          <a href="#" className="text-white/80 hover:text-white inline-flex items-center gap-2">Voir tout <ChevronRight className="h-4 w-4" /></a>
+          <a href="#" class="text-white/80 hover:text-white inline-flex items-center gap-2">Toutes les dates ↗</a>
         </div>
-
-        <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <AudioPlayer />
-          {DISCO.map((d) => (
-            <a key={d.title} href={d.link} className="group relative isolate rounded-2xl overflow-hidden ring-1 ring-white/10">
-              <img src={d.cover} alt={d.title} className="w-full h-64 object-cover group-hover:scale-105 transition duration-500" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent" />
-              <div className="absolute bottom-0 p-4">
-                <div className="text-white font-semibold">{d.title}</div>
-                <div className="text-white/60 text-sm">{d.year}</div>
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <a href="#" class="group flex items-center justify-between gap-4 rounded-2xl bg-white/5 ring-1 ring-white/10 p-4 hover:bg-white/10 transition">
+            <div class="flex items-center gap-4">
+              <div class="h-12 w-12 rounded-xl bg-amber-400 text-black grid place-items-center font-bold">21 oct</div>
+              <div>
+                <div class="text-white font-semibold">Paris</div>
+                <div class="text-white/60 text-sm">Le Trianon</div>
               </div>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Tour() {
-  return (
-    <section id="tour" className="relative py-24">
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(60%_40%_at_50%_0%,rgba(255,200,0,0.15),transparent)]" />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-end justify-between gap-8 flex-wrap">
-          <div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white">Tournée</h2>
-            <p className="text-white/70 mt-2">Réserve tes places pour l’expérience live.</p>
-          </div>
-          <a href="#" className="text-white/80 hover:text-white inline-flex items-center gap-2">Toutes les dates <ExternalLink className="h-4 w-4" /></a>
-        </div>
-
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-          {DATES.map((g, i) => (
-            <a key={i} href={g.link} className="group flex items-center justify-between gap-4 rounded-2xl bg-white/5 ring-1 ring-white/10 p-4 hover:bg-white/10 transition">
-              <div className="flex items-center gap-4">
-                <div className="h-12 w-12 rounded-xl bg-amber-400 text-black grid place-items-center font-bold">{new Date(g.date).toLocaleDateString(undefined, { day: '2-digit', month: 'short' })}</div>
-                <div>
-                  <div className="text-white font-semibold">{g.city}</div>
-                  <div className="text-white/60 text-sm">{g.venue}</div>
-                </div>
+            </div>
+            <div class="text-white/70 text-sm">Billets →</div>
+          </a>
+          <a href="#" class="group flex items-center justify-between gap-4 rounded-2xl bg-white/5 ring-1 ring-white/10 p-4 hover:bg-white/10 transition">
+            <div class="flex items-center gap-4">
+              <div class="h-12 w-12 rounded-xl bg-amber-400 text-black grid place-items-center font-bold">03 nov</div>
+              <div>
+                <div class="text-white font-semibold">Lyon</div>
+                <div class="text-white/60 text-sm">Transbordeur</div>
               </div>
-              <div className="text-white/70 text-sm flex items-center gap-1">Billets <ArrowRight className="h-4 w-4" /></div>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Video() {
-  return (
-    <section id="video" className="relative py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-end justify-between gap-8 flex-wrap">
-          <div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white">Vidéos</h2>
-            <p className="text-white/70 mt-2">Clips et visualisers en haute définition.</p>
-          </div>
-          <a href="#" className="text-white/80 hover:text-white inline-flex items-center gap-2">Chaîne YouTube <Youtube className="h-4 w-4" /></a>
-        </div>
-
-        <div className="mt-8 aspect-video rounded-2xl overflow-hidden ring-1 ring-white/10 bg-black">
-          <iframe
-            className="w-full h-full"
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1"
-            title="HSYNTH - Clip"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Shop() {
-  return (
-    <section id="shop" className="relative py-24">
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(60%_60%_at_100%_0%,rgba(255,255,255,0.06),transparent)]" />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-end justify-between gap-8 flex-wrap">
-          <div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white">Shop</h2>
-            <p className="text-white/70 mt-2">Éditions limitées conçues pour la scène et la rue.</p>
-          </div>
-          <a href="#" className="text-white/80 hover:text-white inline-flex items-center gap-2">Entrer dans le shop <ShoppingBag className="h-4 w-4" /></a>
-        </div>
-
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[1, 2, 3].map((i) => (
-            <a key={i} href="#" className="group relative isolate rounded-2xl overflow-hidden ring-1 ring-white/10 bg-white/5">
-              <img src={`https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1200&auto=format&fit=crop`} alt="merch" className="w-full h-72 object-cover group-hover:scale-105 transition duration-500" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
-              <div className="absolute bottom-0 p-4">
-                <div className="text-white font-semibold">T-Shirt HSYNTH #{i}</div>
-                <div className="text-white/60 text-sm">Drop limité</div>
+            </div>
+            <div class="text-white/70 text-sm">Billets →</div>
+          </a>
+          <a href="#" class="group flex items-center justify-between gap-4 rounded-2xl bg-white/5 ring-1 ring-white/10 p-4 hover:bg-white/10 transition">
+            <div class="flex items-center gap-4">
+              <div class="h-12 w-12 rounded-xl bg-amber-400 text-black grid place-items-center font-bold">18 nov</div>
+              <div>
+                <div class="text-white font-semibold">Marseille</div>
+                <div class="text-white/60 text-sm">Espace Julien</div>
               </div>
-            </a>
-          ))}
+            </div>
+            <div class="text-white/70 text-sm">Billets →</div>
+          </a>
+          <a href="#" class="group flex items-center justify-between gap-4 rounded-2xl bg-white/5 ring-1 ring-white/10 p-4 hover:bg-white/10 transition">
+            <div class="flex items-center gap-4">
+              <div class="h-12 w-12 rounded-xl bg-amber-400 text-black grid place-items-center font-bold">05 déc</div>
+              <div>
+                <div class="text-white font-semibold">Bruxelles</div>
+                <div class="text-white/60 text-sm">AB</div>
+              </div>
+            </div>
+            <div class="text-white/70 text-sm">Billets →</div>
+          </a>
         </div>
       </div>
     </section>
-  );
-}
 
-function Contact() {
-  return (
-    <section id="contact" className="relative py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-2xl ring-1 ring-white/10 bg-white/5 p-6 md:p-10 backdrop-blur">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+    <!-- VIDEO -->
+    <section id="video" class="relative py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-end justify-between gap-8 flex-wrap">
+          <div>
+            <h2 class="text-3xl sm:text-4xl font-bold">Vidéos</h2>
+            <p class="text-white/70 mt-2">Clips et visualizers en haute définition.</p>
+          </div>
+          <a href="#" class="text-white/80 hover:text-white inline-flex items-center gap-2">Chaîne YouTube →</a>
+        </div>
+        <div class="mt-8 aspect-video rounded-2xl overflow-hidden ring-1 ring-white/10 bg-black">
+          <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1" title="HSYNTH - Clip" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHOP -->
+    <section id="shop" class="relative py-24">
+      <div class="absolute inset-0 -z-10 bg-[radial-gradient(60%_60%_at_100%_0%,rgba(255,255,255,0.06),transparent)]"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-end justify-between gap-8 flex-wrap">
+          <div>
+            <h2 class="text-3xl sm:text-4xl font-bold">Shop</h2>
+            <p class="text-white/70 mt-2">Éditions limitées conçues pour la scène et la rue.</p>
+          </div>
+          <a href="#" class="text-white/80 hover:text-white inline-flex items-center gap-2">Entrer dans le shop →</a>
+        </div>
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <a href="#" class="group relative isolate rounded-2xl overflow-hidden ring-1 ring-white/10 bg-white/5">
+            <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1200&auto=format&fit=crop" alt="merch" class="w-full h-72 object-cover group-hover:scale-105 transition duration-500"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+            <div class="absolute bottom-0 p-4">
+              <div class="text-white font-semibold">T‑Shirt HSYNTH #1</div>
+              <div class="text-white/60 text-sm">Drop limité</div>
+            </div>
+          </a>
+          <a href="#" class="group relative isolate rounded-2xl overflow-hidden ring-1 ring-white/10 bg-white/5">
+            <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1200&auto=format&fit=crop" alt="merch" class="w-full h-72 object-cover group-hover:scale-105 transition duration-500"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+            <div class="absolute bottom-0 p-4">
+              <div class="text-white font-semibold">T‑Shirt HSYNTH #2</div>
+              <div class="text-white/60 text-sm">Drop limité</div>
+            </div>
+          </a>
+          <a href="#" class="group relative isolate rounded-2xl overflow-hidden ring-1 ring-white/10 bg-white/5">
+            <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1200&auto=format&fit=crop" alt="merch" class="w-full h-72 object-cover group-hover:scale-105 transition duration-500"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+            <div class="absolute bottom-0 p-4">
+              <div class="text-white font-semibold">T‑Shirt HSYNTH #3</div>
+              <div class="text-white/60 text-sm">Drop limité</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="relative py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="rounded-2xl ring-1 ring-white/10 bg-white/5 p-6 md:p-10">
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
             <div>
-              <h3 className="text-2xl font-bold text-white">Restons connectés</h3>
-              <p className="text-white/70 mt-2">Booking, presse, collaborations — écris-nous.</p>
-              <div className="mt-6 flex gap-3">
-                <a href="#" className="inline-flex items-center gap-2 rounded-xl bg-white text-black px-4 py-2"><Mail className="h-4 w-4" /> Email</a>
-                <a href="#" className="inline-flex items-center gap-2 rounded-xl bg-white/90 hover:bg-white text-black px-4 py-2"><Instagram className="h-4 w-4" /> Instagram</a>
-                <a href="#" className="inline-flex items-center gap-2 rounded-xl bg-white/90 hover:bg-white text-black px-4 py-2"><Twitter className="h-4 w-4" /> X</a>
+              <h3 class="text-2xl font-bold">Restons connectés</h3>
+              <p class="text-white/70 mt-2">Booking, presse, collaborations — écris-nous.</p>
+              <div class="mt-6 flex gap-3">
+                <a href="mailto:contact@hsynth.art" class="lift inline-flex items-center gap-2 rounded-xl bg-white text-black px-4 py-2">Email</a>
+                <a href="#" class="lift inline-flex items-center gap-2 rounded-xl bg-white/90 hover:bg-white text-black px-4 py-2">Instagram</a>
+                <a href="#" class="lift inline-flex items-center gap-2 rounded-xl bg-white/90 hover:bg-white text-black px-4 py-2">X</a>
               </div>
             </div>
-            <form className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <input className="rounded-xl px-4 py-3 bg-black/40 ring-1 ring-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-amber-400" placeholder="Nom" />
-              <input className="rounded-xl px-4 py-3 bg-black/40 ring-1 ring-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-amber-400" placeholder="Email" type="email" />
-              <input className="sm:col-span-2 rounded-xl px-4 py-3 bg-black/40 ring-1 ring-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-amber-400" placeholder="Objet" />
-              <textarea rows={4} className="sm:col-span-2 rounded-xl px-4 py-3 bg-black/40 ring-1 ring-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-amber-400" placeholder="Message" />
-              <button className="sm:col-span-2 inline-flex items-center gap-2 rounded-xl bg-amber-400 text-black px-5 py-3 font-semibold hover:translate-y-[-2px] transition shadow-lg">
-                Envoyer <ArrowRight className="h-4 w-4" />
-              </button>
+            <form class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4" onsubmit="event.preventDefault(); alert('Merci ! On revient vers toi.');">
+              <input class="rounded-xl px-4 py-3 bg-black/40 ring-1 ring-white/10 placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-amber-400" placeholder="Nom" />
+              <input class="rounded-xl px-4 py-3 bg-black/40 ring-1 ring-white/10 placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-amber-400" placeholder="Email" type="email" />
+              <input class="sm:col-span-2 rounded-xl px-4 py-3 bg-black/40 ring-1 ring-white/10 placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-amber-400" placeholder="Objet" />
+              <textarea rows="4" class="sm:col-span-2 rounded-xl px-4 py-3 bg-black/40 ring-1 ring-white/10 placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-amber-400" placeholder="Message"></textarea>
+              <button class="sm:col-span-2 lift inline-flex items-center gap-2 rounded-xl bg-amber-400 text-black px-5 py-3 font-semibold">Envoyer →</button>
             </form>
           </div>
         </div>
       </div>
     </section>
-  );
-}
 
-function Footer() {
-  return (
-    <footer className="relative py-10 border-t border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-        <p className="text-white/60 text-sm">© {new Date().getFullYear()} HSYNTH. Tous droits réservés.</p>
-        <div className="flex items-center gap-4 text-white/70">
-          <a href="#" className="hover:text-white">Mentions légales</a>
-          <a href="#" className="hover:text-white">Politique de confidentialité</a>
+    <!-- FOOTER -->
+    <footer class="relative py-10 border-t border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-white/60 text-sm">© <span id="year"></span> HSYNTH. Tous droits réservés.</p>
+        <div class="flex items-center gap-4 text-white/70">
+          <a href="#" class="hover:text-white">Mentions légales</a>
+          <a href="#" class="hover:text-white">Politique de confidentialité</a>
         </div>
       </div>
     </footer>
-  );
-}
 
-export default function HsynthSite() {
-  const [open, setOpen] = useState(false);
-  useEffect(() => {
-    const root = document.documentElement;
-    root.classList.add("dark");
-  }, []);
-
-  return (
-    <main className="relative min-h-screen bg-black text-white selection:bg-amber-300 selection:text-black">
-      <style>{`
-        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        html, body, #root { height: 100%; }
-      `}</style>
-      <Nav open={open} setOpen={setOpen} />
-      <Hero />
-      <Music />
-      <Tour />
-      <Video />
-      <Shop />
-      <Contact />
-      <Footer />
-    </main>
-  );
-}
+    <script>
+      // current year
+      document.getElementById('year').textContent = new Date().getFullYear();
+      // mobile menu
+      const btn = document.getElementById('menuBtn');
+      const m = document.getElementById('mobileMenu');
+      btn.addEventListener('click', () => m.classList.toggle('hidden'));
+      // audio player
+      const playBtn = document.getElementById('playBtn');
+      const audio = document.getElementById('audio');
+      let playing = false;
+      playBtn.addEventListener('click', () => {
+        if (!playing) { audio.play(); playBtn.textContent = 'Pause'; playing = true; }
+        else { audio.pause(); playBtn.textContent = 'Play'; playing = false; }
+      });
+    </script>
+  </body>
+</html>
